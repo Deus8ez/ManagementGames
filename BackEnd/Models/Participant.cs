@@ -10,10 +10,11 @@ namespace BackEnd.Models
 {
     [Table("Participant")]
     [Index(nameof(DateOfBirth), nameof(Name), nameof(Surname), nameof(Patronym), Name = "IX_Участники", IsUnique = true)]
-    public partial class Participant
+    public partial class Participant 
     {
         public Participant()
         {
+            JuryInPanels = new HashSet<JuryInPanel>();
             ParticipantInTournaments = new HashSet<ParticipantInTournament>();
         }
 
@@ -38,8 +39,12 @@ namespace BackEnd.Models
         public string BlitzGameRank { get; set; }
         [Column("Can be a jury")]
         public bool CanBeAJury { get; set; }
-
+        [InverseProperty("ParticipantInSchoolNavigation")]
+        public virtual ParticipantInSchool ParticipantInSchool { get; set; }
+        [InverseProperty(nameof(JuryInPanel.JuryParticipant))]
+        public virtual ICollection<JuryInPanel> JuryInPanels { get; set; }
         [InverseProperty(nameof(ParticipantInTournament.ParticipantInTournamentNavigation))]
         public virtual ICollection<ParticipantInTournament> ParticipantInTournaments { get; set; }
+        public string RoleName { get; set; }
     }
 }

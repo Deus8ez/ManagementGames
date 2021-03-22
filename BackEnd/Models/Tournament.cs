@@ -14,6 +14,7 @@ namespace BackEnd.Models
     {
         public Tournament()
         {
+            JuryInPanels = new HashSet<JuryInPanel>();
             ParticipantInTournaments = new HashSet<ParticipantInTournament>();
         }
 
@@ -26,10 +27,13 @@ namespace BackEnd.Models
         public string TournamentName { get; set; }
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
+        [Required]
         [Column("Start time")]
-        public TimeSpan StartTime { get; set; }
+        [StringLength(6)]
+        public string StartTime { get; set; }
         [Column("End time")]
-        public TimeSpan? EndTime { get; set; }
+        [StringLength(6)]
+        public string EndTime { get; set; }
         [Column("Tournament format ID")]
         public int TournamentFormatId { get; set; }
         [Column("Tournament type ID")]
@@ -51,6 +55,8 @@ namespace BackEnd.Models
         [ForeignKey(nameof(TournamentTypeId))]
         [InverseProperty("Tournaments")]
         public virtual TournamentType TournamentType { get; set; }
+        [InverseProperty(nameof(JuryInPanel.TournamentWithJury))]
+        public virtual ICollection<JuryInPanel> JuryInPanels { get; set; }
         [InverseProperty(nameof(ParticipantInTournament.TournamentWithParticipant))]
         public virtual ICollection<ParticipantInTournament> ParticipantInTournaments { get; set; }
     }

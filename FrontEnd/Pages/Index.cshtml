@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <h1>Турниры</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Дата</th>
+            <th>Время начала</th>
+            <th>Время окончания</th>
+            <th>Формат</th>
+            <th>Тип</th>
+            <th>Место проведения</th>
+            <th>Сетка турнира</th>
+        </tr>
+        @foreach (var tournament in Model.Tournaments)
+        {
+            <tr>
+                <td>@tournament.TournamentId</td>
+                <td>@tournament.TournamentName</td>
+                <td>@tournament.Date.</td>
+                <td>@tournament.StartTime.</td>
+                <td>@tournament.EndTime.</td>
+                <td>@tournament.TournamentFormat</td>
+                <td>@tournament.TournamentType</td>
+                <td>@tournament.TournamentLocation</td>
+                <td>@tournament.TournamentGrid</td>
+                <td><a asp-page="TournamentDetails" asp-route-id="@tournament.TournamentId">Редактировать</a></td>
+                <td><a>Удалить</a></td>
+            </tr>
+        }
+    </table>
+</div>
+

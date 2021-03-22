@@ -13,9 +13,9 @@ namespace BackEnd.Controllers
     [ApiController]
     public class ParticipantsController : ControllerBase
     {
-        private readonly ManagementGames _context;
+        private readonly ManagementGamesDB _context;
 
-        public ParticipantsController(ManagementGames context)
+        public ParticipantsController(ManagementGamesDB context)
         {
             _context = context;
         }

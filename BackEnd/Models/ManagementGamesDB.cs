@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BackEnd.Models
 {
-    public partial class ManagementGames : DbContext
+    public partial class ManagementGamesDB : DbContext
     {
-        public ManagementGames()
+        public ManagementGamesDB()
         {
         }
 
-        public ManagementGames(DbContextOptions<ManagementGames> options)
+        public ManagementGamesDB(DbContextOptions<ManagementGamesDB> options)
             : base(options)
         {
         }
@@ -35,7 +35,7 @@ namespace BackEnd.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-UPBQTM3;Initial Catalog=kub;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-CRVD7EK;Initial Catalog=kub;Integrated Security=True");
             }
         }
 
@@ -46,17 +46,17 @@ namespace BackEnd.Models
             modelBuilder.Entity<JuryInPanel>(entity =>
             {
                 entity.HasOne(d => d.JuryPanel)
-                    .WithMany()
+                    .WithMany(p => p.JuryInPanels)
                     .HasForeignKey(d => d.JuryPanelId)
                     .HasConstraintName("FK_Судьи в коллегиях_Коллегии судей");
 
                 entity.HasOne(d => d.JuryParticipant)
-                    .WithMany()
+                    .WithMany(p => p.JuryInPanels)
                     .HasForeignKey(d => d.JuryParticipantId)
                     .HasConstraintName("FK_Судьи в коллегиях_Участники1");
 
                 entity.HasOne(d => d.TournamentWithJury)
-                    .WithMany()
+                    .WithMany(p => p.JuryInPanels)
                     .HasForeignKey(d => d.TournamentWithJuryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Судьи в коллегиях_Турниры");
@@ -71,12 +71,12 @@ namespace BackEnd.Models
             modelBuilder.Entity<ParticipantInSchool>(entity =>
             {
                 entity.HasOne(d => d.ParticipantInSchoolNavigation)
-                    .WithOne()
+                    .WithOne(p => p.ParticipantInSchool)
                     .HasForeignKey<ParticipantInSchool>(d => d.ParticipantInSchoolId)
                     .HasConstraintName("FK_Участники в школах_Участники");
 
                 entity.HasOne(d => d.ParticipantSchool)
-                    .WithMany()
+                    .WithMany(p => p.ParticipantInSchools)
                     .HasForeignKey(d => d.ParticipantSchoolId)
                     .HasConstraintName("FK_Участники в школах_Школы");
             });
@@ -105,6 +105,10 @@ namespace BackEnd.Models
 
             modelBuilder.Entity<Tournament>(entity =>
             {
+                entity.Property(e => e.EndTime).IsFixedLength(true);
+
+                entity.Property(e => e.StartTime).IsFixedLength(true);
+
                 entity.HasOne(d => d.TournamentFormat)
                     .WithMany(p => p.Tournaments)
                     .HasForeignKey(d => d.TournamentFormatId)
@@ -140,16 +144,12 @@ namespace BackEnd.Models
             {
                 entity.HasKey(e => e.GridId)
                     .HasName("PK_Вариант сетки турнира");
-
-                entity.Property(e => e.Type).IsFixedLength(true);
             });
 
             modelBuilder.Entity<TournamentType>(entity =>
             {
                 entity.HasKey(e => e.TypeId)
                     .HasName("PK_Типы турниров");
-
-                entity.Property(e => e.Type).IsFixedLength(true);
             });
 
             OnModelCreatingPartial(modelBuilder);

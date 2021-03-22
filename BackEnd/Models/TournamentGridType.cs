@@ -20,7 +20,7 @@ namespace BackEnd.Models
         [Column("Grid ID")]
         public int GridId { get; set; }
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string Type { get; set; }
 
         [InverseProperty(nameof(Tournament.TournamentGrid))]
