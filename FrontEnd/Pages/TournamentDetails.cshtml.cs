@@ -20,7 +20,7 @@ namespace FrontEnd.Pages.Shared
         }
 
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             Participants = await _apiClient.GetParticipantsInTournamentAsync(id);
 

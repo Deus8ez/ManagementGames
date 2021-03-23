@@ -39,12 +39,13 @@ namespace BackEnd.Models
         public string BlitzGameRank { get; set; }
         [Column("Can be a jury")]
         public bool CanBeAJury { get; set; }
+        public string RoleName { get; set; }
+        public string SchoolName { get; set; }
         [InverseProperty("ParticipantInSchoolNavigation")]
         public virtual ParticipantInSchool ParticipantInSchool { get; set; }
         [InverseProperty(nameof(JuryInPanel.JuryParticipant))]
         public virtual ICollection<JuryInPanel> JuryInPanels { get; set; }
         [InverseProperty(nameof(ParticipantInTournament.ParticipantInTournamentNavigation))]
         public virtual ICollection<ParticipantInTournament> ParticipantInTournaments { get; set; }
-        public string RoleName { get; set; }
     }
 }

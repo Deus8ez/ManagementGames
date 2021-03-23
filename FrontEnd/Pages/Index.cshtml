@@ -4,36 +4,46 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
-    <h1>Турниры</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Название</th>
-            <th>Дата</th>
-            <th>Время начала</th>
-            <th>Время окончания</th>
-            <th>Формат</th>
-            <th>Тип</th>
-            <th>Место проведения</th>
-            <th>Сетка турнира</th>
-        </tr>
-        @foreach (var tournament in Model.Tournaments)
-        {
-            <tr>
-                <td>@tournament.TournamentId</td>
-                <td>@tournament.TournamentName</td>
-                <td>@tournament.Date.</td>
-                <td>@tournament.StartTime.</td>
-                <td>@tournament.EndTime.</td>
-                <td>@tournament.TournamentFormat</td>
-                <td>@tournament.TournamentType</td>
-                <td>@tournament.TournamentLocation</td>
-                <td>@tournament.TournamentGrid</td>
-                <td><a asp-page="TournamentDetails" asp-route-id="@tournament.TournamentId">Редактировать</a></td>
-                <td><a>Удалить</a></td>
-            </tr>
-        }
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                <li><a asp-page="TournamentForm">Зарегистрировать турнир</a></li>
+                <li><a>Зарегистрировать участника</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h1>Турниры</h1>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Дата</th>
+                    <th>Время начала</th>
+                    <th>Время окончания</th>
+                    <th>Формат</th>
+                    <th>Тип</th>
+                    <th>Место проведения</th>
+                    <th>Сетка турнира</th>
+                </tr>
+                @foreach (var tournament in Model.Tournaments)
+                {
+                    <tr>
+                        <td>@tournament.TournamentId</td>
+                        <td>@tournament.TournamentName</td>
+                        <td>@tournament.Date.</td>
+                        <td>@tournament.StartTime.</td>
+                        <td>@tournament.EndTime.</td>
+                        <td>@tournament.TournamentFormat</td>
+                        <td>@tournament.TournamentType</td>
+                        <td>@tournament.TournamentLocation</td>
+                        <td>@tournament.TournamentGrid</td>
+                        <td><a asp-page="TournamentDetails" asp-route-id="@tournament.TournamentId">Редактировать</a></td>
+                        <td><a>Удалить</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
 

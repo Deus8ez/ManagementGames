@@ -1,0 +1,103 @@
+﻿@page
+@model ManagementGamesDTO.Tournament
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                <li><a asp-page="Index">Назад</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <form method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><label>Город:</label></th>
+                            <th>
+                                <input asp-for="@Model.TournamentLocation.City" data-val="true" data-val-required="Введите место" id="Location" class="input-validation-error" />
+                            </th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Адрес:</label></th>
+                            <th>
+                                <input asp-for="@Model.TournamentLocation.Address" data-val="true" data-val-required="Введите место" id="Location" class="input-validation-error" />
+                            </th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Дата:</label></th>
+                            <th>
+                                <input asp-for="@Model.Date" data-val="true" data-val-required="Введите дату" id="DateHeld" class="input-validation-error" />
+                            </th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Вариант сетки турнира:</label></th>
+                            <th>
+                                <select asp-for="@Model.TournamentGridId">
+                                    <option value="1">Каждый с каждым</option>
+                                    <option value="2">Навылет</option>
+                                    <option value="3">По командам</option>
+                                    <option value="3">Комбинированный</option>
+                                </select>
+                            </th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Название:</label></th>
+                            <th><input asp-for="@Model.TournamentName" id="Name" class="input-validation-error" /></th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Начало:</label></th>
+                            <th><input asp-for="@Model.StartTime" id="Name" type="time"/></th>
+                        </tr>
+                        <tr>
+                            <th><label>Формат:</label></th>
+                            <th>
+                                <select asp-for="@Model.TournamentFormatId">
+                                    <option value="1">Оффлайн</option>
+                                    <option value="2">Онлайн</option>
+                                    <option value="3">Гибридный</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Тип:</label></th>
+                            <th>
+                                <select asp-for="@Model.TournamentTypeId">
+                                    <option value="1">Практикум</option>
+                                    <option value="2">Товарищеский</option>
+                                    <option value="3">Именной</option>
+                                    <option value="4">Отборочный</option>
+                                    <option value="5">Финал года</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button type="submit">
+                        Зарегистрировать
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

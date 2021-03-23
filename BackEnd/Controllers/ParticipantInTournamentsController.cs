@@ -48,6 +48,8 @@ namespace BackEnd.Controllers
             var participantsInTournament = await (from pt in _context.ParticipantInTournaments
                                              join p in _context.Participants on pt.ParticipantInTournamentId equals p.ParticipantId
                                              join r in _context.Roles on pt.ParticpantRoleId equals r.RoleId
+                                             join ps in _context.ParticipantInSchools on p.ParticipantId equals ps.ParticipantInSchoolId
+                                             join s in _context.Schools on ps.ParticipantSchoolId equals s.SchoolId
                                              where pt.TournamentWithParticipantId == id
                                              select new Participant
                                              {
@@ -58,7 +60,8 @@ namespace BackEnd.Controllers
                                                  BlitzGameRank = p.BlitzGameRank,
                                                  ClassicGameRank = p.ClassicGameRank,
                                                  DateOfBirth = p.DateOfBirth,
-                                                 RoleName = r.Role1
+                                                 RoleName = r.Role1,
+                                                 SchoolName = s.School1
                                              }).ToListAsync();
 
             if (participantsInTournament == null)

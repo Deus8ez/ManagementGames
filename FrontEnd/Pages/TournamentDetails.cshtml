@@ -1,11 +1,12 @@
 ﻿@page
 @model FrontEnd.Pages.Shared.TournamentDetailsModel
 @{
+    Layout = "_Layout";
 }
 
 <div>
     <h1>Участники турнира</h1>
-    <table>
+    <table class="table table-sm">
         <tr>
             <th>ID</th>
             <th>Имя</th>
@@ -15,21 +16,23 @@
             <th>Ранг в блиц игре</th>
             <th>Ранг в классической игре</th>
             <th>Роль в турнире</th>
+            <th>Школа</th>
         </tr>
         @foreach (var person in Model.Participants)
         {
-    <tr>
-        <td>@person.ParticipantId</td>
-        <td>@person.Name</td>
-        <td>@person.Surname</td>
-        <td>@person.Patronym</td>
-        <td>@person.DateOfBirth</td>
-        <td>@person.BlitzGameRank</td>
-        <td>@person.ClassicGameRank</td>
-        <td>@person.RoleName</td>
-        <td><a asp-page="ParticipantDetails" asp-route-id="@person.ParticipantId">Редактировать</a></td>
-        <td><a>Удалить</a></td>
-    </tr>
+        <tr>
+            <td>@person.ParticipantId</td>
+            <td>@person.Name</td>
+            <td>@person.Surname</td>
+            <td>@person.Patronym</td>
+            <td>@person.DateOfBirth</td>
+            <td>@person.BlitzGameRank</td>
+            <td>@person.ClassicGameRank</td>
+            <td>@person.RoleName</td>
+            <td>@person.SchoolName</td>
+            <td><a asp-page="ParticipantDetails" asp-route-id="@person.ParticipantId">Редактировать</a></td>
+            <td><a>Удалить</a></td>
+        </tr>
         }
     </table>
 </div>
