@@ -7,20 +7,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FrontEnd.Pages
 {
-    public class TournamentFormModel : PageModel
+    public class ParticipantFormModel : PageModel
     {
         public void OnGet()
         {
-        }
-
-        public IActionResult OnPost()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            return RedirectToPage("Index");
         }
     }
 }

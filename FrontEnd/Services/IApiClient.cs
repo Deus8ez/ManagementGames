@@ -8,6 +8,7 @@ namespace FrontEnd.Services
 {
     public interface IApiClient
     {
+        List<Tournament> GetFakeTournaments();
         Task<List<Tournament>> GetTournamentsAsync();
         Task<Tournament> GetTournament(int id);
         Task<List<Participant>> GetParticipantsAsync();

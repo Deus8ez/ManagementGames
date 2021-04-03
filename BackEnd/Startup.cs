@@ -30,11 +30,11 @@ namespace BackEnd
         {
 
             services.AddControllers();
-            services.AddDbContext<ManagementGamesDB>(options => options.UseSqlServer(Configuration.GetConnectionString("HomeConnString")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd", Version = "v1" });
             });
+            services.AddDbContext<ManagementGamesDB>(options => options.UseSqlServer(Configuration.GetConnectionString("HomeConnString")));
             services.AddCors();
         }
 

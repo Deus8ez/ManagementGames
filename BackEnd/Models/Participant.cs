@@ -10,7 +10,7 @@ namespace BackEnd.Models
 {
     [Table("Participant")]
     [Index(nameof(DateOfBirth), nameof(Name), nameof(Surname), nameof(Patronym), Name = "IX_Участники", IsUnique = true)]
-    public partial class Participant 
+    public partial class Participant
     {
         public Participant()
         {

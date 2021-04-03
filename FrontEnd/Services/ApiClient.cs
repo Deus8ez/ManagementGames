@@ -18,6 +18,20 @@ namespace FrontEnd.Services
             _httpClient = httpClient;
         }
 
+        public List<Tournament> GetFakeTournaments()
+        {
+            List<Tournament> ts = new List<Tournament>
+            {
+                new Tournament
+                {
+                    TournamentId = 1,
+                    TournamentName = "Турнир в Томске"
+                }
+            };
+
+            return ts;
+        }
+
         public async Task<List<Tournament>> GetTournamentsAsync()
         {
             var response = await _httpClient.GetAsync("api/tournaments");

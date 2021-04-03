@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-
 #nullable disable
 
 namespace BackEnd.Models
 {
     [Table("Tournament")]
     [Index(nameof(Date), nameof(TournamentLocationId), Name = "IX_Турниры", IsUnique = true)]
-    public partial class Tournament
+    public partial class Tournament 
     {
         public Tournament()
         {

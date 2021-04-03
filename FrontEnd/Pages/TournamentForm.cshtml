@@ -13,8 +13,17 @@
         </div>
         <div class="col-md-4">
             <form method="post">
+                <div asp-validation-summary="All"></div>
                 <table>
                     <tbody>
+                        <tr>
+                            <th><label>Название:</label></th>
+                            <th><input asp-for="@Model.TournamentName" id="Name" class="input-validation-error" /></th>
+                            @Html.ValidationMessageFor(m => m.TournamentName)
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
                         <tr>
                             <th><label>Город:</label></th>
                             <th>
@@ -35,12 +44,21 @@
                         </tr>
                         <tr>
                             <th><label>Дата:</label></th>
-                            <th>
-                                <input asp-for="@Model.Date" data-val="true" data-val-required="Введите дату" id="DateHeld" class="input-validation-error" />
-                            </th>
+                            <th><input asp-for="@Model.Date" id="Name" type="date" /></th>
                             <th>
                                 <p class="star">*</p>
                             </th>
+                        </tr>
+                        <tr>
+                            <th><label>Начало:</label></th>
+                            <th><input asp-for="@Model.StartTime" id="Name" type="time" /></th>
+                            <th>
+                                <p class="star">*</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label>Конец:</label></th>
+                            <th><input asp-for="@Model.EndTime" id="Name" type="time" /></th>
                         </tr>
                         <tr>
                             <th><label>Вариант сетки турнира:</label></th>
@@ -57,17 +75,6 @@
                             </th>
                         </tr>
                         <tr>
-                            <th><label>Название:</label></th>
-                            <th><input asp-for="@Model.TournamentName" id="Name" class="input-validation-error" /></th>
-                            <th>
-                                <p class="star">*</p>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th><label>Начало:</label></th>
-                            <th><input asp-for="@Model.StartTime" id="Name" type="time"/></th>
-                        </tr>
-                        <tr>
                             <th><label>Формат:</label></th>
                             <th>
                                 <select asp-for="@Model.TournamentFormatId">
@@ -75,6 +82,9 @@
                                     <option value="2">Онлайн</option>
                                     <option value="3">Гибридный</option>
                                 </select>
+                            </th>
+                            <th>
+                                <p class="star">*</p>
                             </th>
                         </tr>
                         <tr>
@@ -87,6 +97,9 @@
                                     <option value="4">Отборочный</option>
                                     <option value="5">Финал года</option>
                                 </select>
+                            </th>
+                            <th>
+                                <p class="star">*</p>
                             </th>
                         </tr>
                     </tbody>

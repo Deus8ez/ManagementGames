@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FrontEnd.Pages
@@ -23,8 +24,11 @@ namespace FrontEnd.Pages
         }
 
         public async Task OnGet()
-        {        
-            Tournaments = await _apiClient.GetTournamentsAsync();
+        {
+            Tournaments = _apiClient.GetFakeTournaments();
+
+            //Tournaments = await _apiClient.GetTournamentsAsync();
+            //string t = JsonSerializer.Serialize(Tournaments);
         }
     }
 }

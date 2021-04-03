@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Models
 {
-    [Table("Jury panel")]
+    //[Table("Jury panel")]
     public partial class JuryPanel
     {
         public JuryPanel()

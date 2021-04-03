@@ -24,7 +24,7 @@ namespace FrontEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddControllersWithViews();
             services.AddHttpClient<IApiClient, ApiClient>(client =>
             {
                 client.BaseAddress = new Uri(Configuration["ServiceUrl"]);
@@ -55,7 +55,9 @@ namespace FrontEnd
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                        name: "home",
+                        pattern: "{controller=Home}/{action=Index}");
             });
         }
     }

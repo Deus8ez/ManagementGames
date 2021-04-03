@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Models
 {
-    [Table("Jury in panel")]
-    [Index(nameof(JuryPanelId), nameof(JuryParticipantId), nameof(TournamentWithJuryId), Name = "IX_Судьи в коллегиях", IsUnique = true)]
+    //[Table("Jury in panel")]
+    //[Index(nameof(JuryPanelId), nameof(JuryParticipantId), nameof(TournamentWithJuryId), Name = "IX_Судьи в коллегиях", IsUnique = true)]
     public partial class JuryInPanel
     {
         [Key]

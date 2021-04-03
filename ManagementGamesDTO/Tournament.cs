@@ -19,7 +19,6 @@ namespace ManagementGamesDTO
         [Key]
         [Column("Tournament ID")]
         public int TournamentId { get; set; }
-        [Required]
         [Column("Tournament name")]
         [StringLength(200)]
         public string TournamentName { get; set; }
